@@ -6,7 +6,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Plugin extends JavaPlugin {
     @Override
     public void onEnable() {
-        getLogger().info("The server will stop in 20s.");
-        Bukkit.getScheduler().runTaskLater(this, () -> Bukkit.getServer().shutdown(), 400);
+        saveDefaultConfig();
+        getConfig().options().copyDefaults(true);
+        int timeToStop = getConfig().getInt("stop_time");
+        getLogger().info(String.format("The server will stop in %ds.", timeToStop));
+        Bukkit.getScheduler().runTaskLater(this, () -> Bukkit.getServer().shutdown(), timeToStop * 20L);
     }
 }
