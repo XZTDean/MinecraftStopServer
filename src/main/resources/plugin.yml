@@ -1,0 +1,6 @@
+name: StopServer
+version: 1.0
+author: DeanX
+main: me.deanx.stopserver.Plugin
+description: Automaticlly stop the server in some time.
+api-version: 1.13
