@@ -10,6 +10,9 @@ public class Plugin extends JavaPlugin {
         getConfig().options().copyDefaults(true);
         int timeToStop = getConfig().getInt("stop_time");
         getLogger().info(String.format("The server will stop in %ds.", timeToStop));
-        Bukkit.getScheduler().runTaskLater(this, () -> Bukkit.getServer().shutdown(), timeToStop * 20L);
+        Bukkit.getScheduler().runTaskLater(this, () -> {
+            getLogger().info("Stopping server");
+            Bukkit.getServer().shutdown();
+        }, timeToStop * 20L);
     }
 }
